@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<title>Song admin</title></head>
+    <body>
+
+	<p>Add a song</p>
+
+	<form id="songform" action ="http://127.0.0.1:8090">
+	    <div>Song name:  <input id="title"></input></div>
+	    <div>First line:  <input id="firstline"></input></div>
+	    <div>Song type:  <select id="songtype">
+		<option>atonal round</option>
+		<option>tonal round</option>
+		<option>things less satisying than that</option>
+	    </select></div>
+	    <input type="submit"/>
+	</form>
+
+	<div id='songresult'></div>
+
+	<script>
+	 function formhandler (){
+	 var title = $("#title").val();
+	 $.post("http://127.0.0.1:8090/newsong",
+		{
+		    title: $("#title").val(),
+		    fulltitle: $("#firstline").val(),
+		    type: $("#songtype").val()
+		},
+	     function (data){
+		 $('#songresult').html(data);
+	     });
+	     return false;
+		   
+
+	 };
+	 
+	 $('#songform').on('submit', formhandler);
+	</script>
+
+</body>
+</html>

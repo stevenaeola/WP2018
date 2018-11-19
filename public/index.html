@@ -14,12 +14,14 @@
 	    <div>Song name:  <input id="title"></input></div>
 
 	</form>
+
+	<div id='songresult'></div>
 	<script>
 	 function formhandler (){
 	 var title = $("#title").val();
 	     $.get("http://127.0.0.1:8090/songs", "title=" + title,
 		   function (data){
-		       alert(data);
+		       $('#songresult').html(data);
 		   });
 	     return false;
 		   
