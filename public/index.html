@@ -11,13 +11,13 @@
 	<p>Choose a song</p>
 
 	<form id="songform" action ="http://127.0.0.1:8090">
-	    <div>Song name:  <input name="title"></input></div>
+	    <div>Song name:  <input id="title"></input></div>
 
 	</form>
 	<script>
 	 function formhandler (){
-	     alert('form submitted');
-	     $.get("http://127.0.0.1:8090/songs", "title=hai",
+	 var title = $("#title").val();
+	     $.get("http://127.0.0.1:8090/songs", "title=" + title,
 		   function (data){
 		       alert(data);
 		   });
